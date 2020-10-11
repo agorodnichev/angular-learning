@@ -1,6 +1,7 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "no-any": true,
     "align": {
       "options": [
         "parameters",
@@ -39,7 +40,7 @@
         "spaces"
       ]
     },
-    "max-classes-per-file": false,
+    "max-classes-per-file": true,
     "max-line-length": [
       true,
       140

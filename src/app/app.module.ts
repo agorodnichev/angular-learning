@@ -1,16 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// app modules
 import { AppRoutingModule } from './app-routing.module';
+import { CoursesModule } from './courses/courses.module';
+import { BreadcrumbModule } from './breadcrumb/breadcrumb.module';
+import { HeaderModule } from './header/header.module';
+import { FooterModule } from './footer/footer.module';
+import { UserModule } from './user/user.module';
+
 import { AppComponent } from './app.component';
+import { SearchComponent } from './search/search.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoursesModule,
+    BreadcrumbModule,
+    HeaderModule,
+    FooterModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
