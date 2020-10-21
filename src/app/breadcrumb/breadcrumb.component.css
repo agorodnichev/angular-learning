@@ -1,0 +1,10 @@
+.breadcrumb {
+    background: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: calc((100% - 80%) / 2); /* 80% - body width */
+}
+
+.breadcrumb p {
+    padding: 0.5em 0;
+}

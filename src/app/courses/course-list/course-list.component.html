@@ -1,1 +1,11 @@
-<p>course-list works!</p>
+<div class="course-list">
+    <div class="add-control-box">
+        <button class="add-button">Add course</button>
+    </div>
+    <ng-container *ngFor="let course of courses">
+        <crs-course class="course-item" [course]="course" (delete)="printInformation($event)"></crs-course>
+    </ng-container>
+    <div class="load-courses">
+        <button (click)="loadMoreHandler()">Load more</button>
+    </div>
+</div>

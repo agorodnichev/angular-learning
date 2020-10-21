@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 // app modules
 import { AppRoutingModule } from './app-routing.module';
 import { CoursesModule } from './courses/courses.module';
@@ -26,6 +26,7 @@ import { SearchComponent } from './search/search.component';
     HeaderModule,
     FooterModule,
     UserModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

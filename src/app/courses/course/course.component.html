@@ -1,1 +1,16 @@
-<p>course works!</p>
+<div class="course">
+    <div class="course-header">
+        <h2>{{ course.title }}</h2>
+        <div class="course-parameters">
+            <div class="course-duration"><span>{{ course.duration | minutesToHours }}</span></div>
+            <div class="course-date"><span>{{ course.creationDate | date: "MM/dd/yyyy" }}</span></div>
+        </div>
+    </div>
+    <div class="description">
+        <p>{{ course.description }}</p>
+        <div class="controls">
+            <button class="edit-button" (click)="editHandler()">Edit</button>
+            <button class="delete-button" (click)="deleteHandler(course.id)">Delete</button>
+        </div>
+    </div>
+</div>

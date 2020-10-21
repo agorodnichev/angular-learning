@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    background: #2b4052;
+    color: #fff;;
+}
+
+.logo {
+    margin-left: 45px;
+}
+
+.controls {
+    display: flex;
+    margin-right: 20px;
+}
