@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
 import { AuthButtonComponent } from './auth-button.component';
 
 describe('AuthButtonComponent', () => {
@@ -22,4 +22,13 @@ describe('AuthButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change title', ()=> {
+    const a: HTMLElement = fixture.nativeElement.querySelector('.button');
+    component.title = 'test';
+    fixture.detectChanges();
+    expect(a.textContent).toContain('test');
+  })
+
+
 });

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
 import { BreadcrumbComponent } from './breadcrumb.component';
 
 describe('BreadcrumbComponent', () => {
@@ -22,4 +22,12 @@ describe('BreadcrumbComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change title on changing class variable', () => {
+    const p = fixture.debugElement.query(By.css('.breadcrumb p'));
+    expect(component.title).toBeDefined();
+    component.title = 'test';
+    expect(component.title).toEqual('test');
+  })
+
 });

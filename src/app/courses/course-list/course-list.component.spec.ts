@@ -1,5 +1,6 @@
+import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
 import { CourseListComponent } from './course-list.component';
 
 describe('CourseListComponent', () => {
@@ -8,7 +9,7 @@ describe('CourseListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseListComponent ]
+      declarations: [ CourseListComponent, CourseStub ]
     })
     .compileComponents();
   }));
@@ -22,4 +23,15 @@ describe('CourseListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should run loadMoreHandler method on click on "load more" button', () => {
+    const loadMoreButton = fixture.debugElement.query(By.css('.load-courses button'));
+    spyOn(component, 'loadMoreHandler');
+    loadMoreButton.triggerEventHandler('click', null);
+    expect(component.loadMoreHandler).toHaveBeenCalled();
+  });
+
 });
+
+@Component({selector: 'crs-course', template: ''})
+class CourseStub {}
