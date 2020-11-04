@@ -8,15 +8,13 @@ import { BreadcrumbModule } from './breadcrumb/breadcrumb.module';
 import { HeaderModule } from './header/header.module';
 import { FooterModule } from './footer/footer.module';
 import { UserModule } from './user/user.module';
-
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent,
+    // SearchComponent,
   ],
   imports: [
     BrowserModule,

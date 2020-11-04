@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Pipe, PipeTransform } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CourseListComponent } from './course-list.component';
@@ -9,7 +9,7 @@ describe('CourseListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseListComponent, CourseStub ]
+      declarations: [ CourseListComponent, CourseStub, OrderByDatePipeMock ]
     })
     .compileComponents();
   }));
@@ -35,3 +35,10 @@ describe('CourseListComponent', () => {
 
 @Component({selector: 'crs-course', template: ''})
 class CourseStub {}
+
+@Pipe({name: 'orderByDate'})
+class OrderByDatePipeMock implements PipeTransform {
+  transform(value: any): any {
+    return null
+  }
+}

@@ -1,8 +1,5 @@
 <div class="course-list">
-    <div class="add-control-box">
-        <button class="add-button">Add course</button>
-    </div>
-    <ng-container *ngFor="let course of courses">
+    <ng-container *ngFor="let course of courses | orderByDate">
         <crs-course class="course-item" [course]="course" (delete)="printInformation($event)"></crs-course>
     </ng-container>
     <div class="load-courses">

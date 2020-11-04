@@ -1,1 +1,13 @@
-<crs-course-list [courses] = "coursesMock"></crs-course-list>
+<div class="search">
+    <input [(ngModel)]="inputValue" type="search" placeholder="Type to search">
+    <button (click)="searchHandler()">Search</button>
+</div>
+<div class="add-control-box">
+    <button class="add-button">Add course</button>
+</div>
+<ng-container *ngIf="!coursesMock.length else courses">
+    <div class="no-data"><span>NO DATA. FEEL FREE TO ADD NEW COURSE</span></div>
+</ng-container>
+<ng-template #courses>
+    <crs-course-list [courses] = "filterList"></crs-course-list>
+</ng-template >

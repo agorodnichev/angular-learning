@@ -63,3 +63,11 @@
     font-size: 1.5em;
     margin-bottom: 15px;
 }
+
+.titled-items {
+    display: flex;
+}
+.star {
+    fill: gold;
+    margin-left: 10px;
+}

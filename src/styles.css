@@ -9,4 +9,5 @@
 
 body {
     background: rgba(206,201,201, 0.25);
+    position: relative;
 }
