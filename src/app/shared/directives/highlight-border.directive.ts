@@ -1,30 +1,29 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[crsBorderHighliter]'
+  selector: '[crsHighlightBorder]'
 })
-export class BorderHighliterDirective {
+export class HighlightBorderDirective {
 
-  @Input('crsBorderHighliter') date: Date;
+  @Input('crsHighlightBorder') date: Date;
 
-  constructor(private el: ElementRef) {}
-
+  constructor(
+    private el: ElementRef,
+    private readonly renderer: Renderer2,
+    ) {}
 
   ngOnInit() {
       const today = new Date()
       if (  this.date.getTime() < today.getTime() && 
             this.date.getTime() >= this.addDays(today, -14).getTime()) {
-        this.el.nativeElement.style.border = '2px solid green';
+        this.renderer.addClass(this.el.nativeElement, 'green');
       } else if ( this.date.getTime() > today.getTime() ) {
-        this.el.nativeElement.style.border = '2px solid blue';
+        this.renderer.addClass(this.el.nativeElement, 'blue');
       }
     }
-
 
     private addDays(date, daysToAdd) {
       const MILLISECONDS_IN_ONE_DAY = 24*3600*1000;
       return new Date(date.getTime() + daysToAdd*MILLISECONDS_IN_ONE_DAY); 
     }
-
-
 }

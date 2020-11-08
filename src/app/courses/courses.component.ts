@@ -19,6 +19,10 @@ export class CoursesComponent implements OnInit {
   searchHandler() {
     this.filterList = this.filterByTextPipe.transform(this.coursesMock, this.inputValue);
   }
+
+  get isCourseListEmpty(): boolean {
+    return !this.coursesMock.length;
+  }
   
   // ngOnChanges() {console.log('ngOnChanges');}
   // ngDoCheck() {console.log('ngDoCheck');}

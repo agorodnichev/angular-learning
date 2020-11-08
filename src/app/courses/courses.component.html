@@ -5,7 +5,7 @@
 <div class="add-control-box">
     <button class="add-button">Add course</button>
 </div>
-<ng-container *ngIf="!coursesMock.length else courses">
+<ng-container *ngIf="isCourseListEmpty else courses">
     <div class="no-data"><span>NO DATA. FEEL FREE TO ADD NEW COURSE</span></div>
 </ng-container>
 <ng-template #courses>

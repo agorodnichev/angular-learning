@@ -12,7 +12,7 @@ describe('CourseComponent component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseComponent, MinutesToHoursPipeStub, BorderHighliterDirectiveMock ]
+      declarations: [ CourseComponent, MinutesToHoursPipeStub, HighlightBorderDirectiveMock ]
     })
     .compileComponents();
   }));
@@ -71,11 +71,11 @@ class MinutesToHoursPipeStub implements PipeTransform {
 
 
 @Directive({
-  selector: '[crsBorderHighliter]'
+  selector: '[crsHighlightBorder]'
 })
-export class BorderHighliterDirectiveMock {
+export class HighlightBorderDirectiveMock {
 
-  @Input('crsBorderHighliter') date: Date;
+  @Input('crsHighlightBorder') date: Date;
 
   constructor(private el: ElementRef) {}
 }
