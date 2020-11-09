@@ -18,18 +18,17 @@ describe('BorderHighliterDirective', () => {
 
   it('should have green border', ()=>{
     let borderElement: HTMLElement = fixture.nativeElement.querySelector('.border1');
-    expect(borderElement.className).toContain('green');
+    expect(borderElement.style.borderColor).toContain('green');
   });
 
   it('should have blue border', ()=>{
     let borderElement: HTMLElement = fixture.nativeElement.querySelector('.border2');
-    expect(borderElement.className).toContain('blue');
+    expect(borderElement.style.borderColor).toContain('blue');
   });
 
   it('should have no border color', ()=>{
     let borderElement: HTMLElement = fixture.nativeElement.querySelector('.border3');
-    expect(borderElement.className).not.toContain('blue');
-    expect(borderElement.className).not.toContain('green');
+    expect(borderElement.style.border).not.toBeUndefined();
   });
 
 

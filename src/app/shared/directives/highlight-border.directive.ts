@@ -16,9 +16,9 @@ export class HighlightBorderDirective {
       const today = new Date()
       if (  this.date.getTime() < today.getTime() && 
             this.date.getTime() >= this.addDays(today, -14).getTime()) {
-        this.renderer.addClass(this.el.nativeElement, 'green');
+          this.renderer.setStyle(this.el.nativeElement, 'border', '2px solid green');
       } else if ( this.date.getTime() > today.getTime() ) {
-        this.renderer.addClass(this.el.nativeElement, 'blue');
+        this.renderer.setStyle(this.el.nativeElement, 'border', '2px solid blue');
       }
     }
 
