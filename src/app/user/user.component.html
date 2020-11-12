@@ -1,1 +1,11 @@
-<p>user works!</p>
+<div class="wrapper">
+    <h2>Login</h2>
+    <label for="email">E-mail:</label>
+    <input type="email" [(ngModel)]="email" placeholder="Enter e-mail" id="email" name="email">
+    <label for="password">Password:</label>
+    <input type="password" [(ngModel)]="password" placeholder="Enter password" id="pass" name="password" minlength="8" required>
+    <div class="action-items">
+        <a href="#">Forgot password?</a>
+        <button (click)="login()" class="login">Login</button>
+    </div>
+</div>

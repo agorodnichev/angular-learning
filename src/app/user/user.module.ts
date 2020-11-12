@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { UserComponent } from './user.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { UserComponent } from './user.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
   ],
   exports: [
     UserComponent,

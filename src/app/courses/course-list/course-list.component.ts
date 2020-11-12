@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Course } from '../shared/course.model';
+import { CoursesService } from '../shared/courses.service';
 
 @Component({
   selector: 'crs-course-list',
@@ -10,13 +11,14 @@ export class CourseListComponent implements OnInit {
   
   @Input() courses: Course[];
   
-  constructor() { }
+  constructor(private readonly coursesService: CoursesService) { }
 
   ngOnInit(): void {
   }
 
-  printInformation(id: number) {
-    console.log(id)
+  deleteCourse(id: number) {
+    // console.log(id)
+    this.coursesService.removeItem(id);
   }
 
   loadMoreHandler() {

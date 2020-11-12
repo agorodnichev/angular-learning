@@ -1,11 +1,15 @@
 <div class="content-wrapper">
     <crs-header></crs-header>
-    <crs-breadcrumb></crs-breadcrumb>
-    <div class="body-wrapper">
-        <section>
-            <!-- <crs-search></crs-search> -->
-            <router-outlet></router-outlet>
-        </section>
-    </div>
+    <ng-container *ngIf="authService.isAuthenticated else user">
+        <crs-breadcrumb></crs-breadcrumb>
+        <div class="body-wrapper">
+            <section>
+                <router-outlet></router-outlet>
+            </section>
+        </div>
+    </ng-container>
+    <ng-template #user>
+        <crs-user></crs-user>
+    </ng-template>
 </div>
 <crs-footer></crs-footer>
