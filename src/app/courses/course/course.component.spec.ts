@@ -1,10 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CourseComponent } from './course.component';
 import { By } from '@angular/platform-browser';
-
-import { Pipe, PipeTransform } from '@angular/core';
-// import { By } from 'protractor';
+import { Pipe, PipeTransform, Directive, Input, ElementRef } from '@angular/core';
 
 
 
@@ -15,7 +12,7 @@ describe('CourseComponent component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseComponent, MinutesToHoursPipeStub ]
+      declarations: [ CourseComponent, MinutesToHoursPipeStub, HighlightBorderDirectiveMock ]
     })
     .compileComponents();
   }));
@@ -23,7 +20,7 @@ describe('CourseComponent component', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CourseComponent);
     component = fixture.componentInstance;
-    component.course = {id: 1, title: 'Test1', creationDate: new Date(2020, 9, 17), duration: 1, description: 'test descr'}; 
+    component.course = {id: 1, topRated: true, title: 'Test1', creationDate: new Date(2020, 9, 17), duration: 1, description: 'test descr'}; 
     fixture.detectChanges();
   });
 
@@ -33,7 +30,7 @@ describe('CourseComponent component', () => {
 
   it('should define title', () => {
     let h2: HTMLElement = fixture.nativeElement.querySelector('h2');
-    expect(h2.textContent).toContain('Test1');
+    expect(h2.textContent).toContain('TEST1');
   });
 
   it('click on "edit" button calls handler', () => {
@@ -70,4 +67,15 @@ class MinutesToHoursPipeStub implements PipeTransform {
   transform(value: number): string {
     return null
  }
+}
+
+
+@Directive({
+  selector: '[crsHighlightBorder]'
+})
+export class HighlightBorderDirectiveMock {
+
+  @Input('crsHighlightBorder') date: Date;
+
+  constructor(private el: ElementRef) {}
 }
