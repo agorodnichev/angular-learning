@@ -10,7 +10,6 @@ import { FooterModule } from './footer/footer.module';
 import { UserModule } from './user/user.module';
 import { AppComponent } from './app.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
