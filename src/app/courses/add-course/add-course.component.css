@@ -1,0 +1,46 @@
+label, input, textarea {
+    display: block;
+}
+
+.wrapper {
+    margin: 0 auto;
+    /* max-width: 450px; */
+}
+
+input, textarea {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.date, .duration {
+    margin-bottom: 25px;
+    display: block;
+    width: 25%;
+}
+
+/* .duration {
+    display: inline-block;
+} */
+/* #duration, span {
+    display: inline-block;
+} */
+
+span {
+    margin-left: 10px;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    align-items: center;
+    width: 75px;
+    padding: 0.7em;
+    background: #32afea;
+    color: #fff;
+    border-radius: 5px;
+    border: 0.1px solid rgba(7,120,173,0.7);
+    cursor: pointer;
+}

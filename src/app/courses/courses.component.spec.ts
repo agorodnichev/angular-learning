@@ -1,9 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Pipe, PipeTransform } from '@angular/core';
 import { CoursesComponent } from './courses.component';
 import { Course } from './shared/course.model';
 import { FormsModule } from '@angular/forms';
 import { CoursesService } from './shared/courses.service';
+import {RouterModule, Router, ActivatedRoute} from '@angular/router';
+import {FilterByTextPipe} from '../shared/pipes/filter-by-text.pipe';
 
 describe('CoursesComponent', () => {
   let component: CoursesComponent;
@@ -11,7 +13,7 @@ describe('CoursesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule, RouterModule],
       providers: [
         {
           provide: CoursesService, 
@@ -21,6 +23,18 @@ describe('CoursesComponent', () => {
               {id: 2, topRated: false, title: 'Test title 2', creationDate: new Date(2020, 9, 25), duration: 2000, description: 'Test2'},
             ]
           }
+      },
+      {
+        provide: FilterByTextPipe,
+        useValue: new FilterByTextPipeMock()
+      },
+      {
+        provide: Router,
+        useValue: {}
+      },
+      {
+        provide: ActivatedRoute,
+        useValue: {}
       }
       ],
       declarations: [ CoursesComponent, CourseListStub ]
@@ -55,4 +69,11 @@ describe('CoursesComponent', () => {
 @Component({selector: 'crs-course-list', template: ''})
 class CourseListStub {
   @Input() courses: Course[];
+}
+
+@Pipe({name: 'filterByText'})
+class FilterByTextPipeMock implements PipeTransform {
+  transform(value: any): any {
+    return null
+  }
 }

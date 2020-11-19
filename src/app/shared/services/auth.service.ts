@@ -9,7 +9,11 @@ export class AuthService {
 
   isAuthenticated = false;
 
-  constructor() { }
+  constructor() { 
+    if (this.getUserInfo()) {
+      this.isAuthenticated = true;
+    }
+  }
 
   login(user: Omit<User, 'id'>) {
     let token: string = Math.random().toString(36).substr(2);
@@ -27,6 +31,6 @@ export class AuthService {
   }
 
   getUserInfo(): Omit<User, 'id'> {
-    return JSON.parse(localStorage.getItem('logininfo')).userInfo;
+    return JSON.parse(localStorage.getItem('logininfo'))?.userInfo;
   }
 }

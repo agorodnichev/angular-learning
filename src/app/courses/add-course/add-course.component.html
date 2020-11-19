@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <!-- E-mail -->
+    <label for="title">Title:</label>
+    <input type="text" [(ngModel)]="title" placeholder="Enter course title" id="title" name="title">
+
+    <!-- Description -->
+    <label for="description">Description:</label>
+    <textarea [(ngModel)]="description" id="description" name="description" placeholder="Enter course description" rows="5"></textarea>
+
+    <!-- Date -->
+    <crs-date class="date"></crs-date>
+
+    <!-- Duration -->
+    <crs-duration class="duration"></crs-duration>
+
+    <!-- Authors -->
+    <!-- skipped for now -->
+
+    <!-- Control buttons -->
+    <div class="controls">
+        <button class="save" (click)="saveHandler()">Save</button>
+        <button class="cancel" (click)="cancelHandler()">Cancel</button>
+    </div>
+</div>
