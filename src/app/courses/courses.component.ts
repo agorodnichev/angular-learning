@@ -25,7 +25,7 @@ export class CoursesComponent implements OnInit {
   }
 
   get isCourseListEmpty(): boolean {
-    return !this.courses.length;
+    return Array.isArray(this.courses) && !this.courses.length;
   }
   
   // ngOnChanges() {console.log('ngOnChanges');}

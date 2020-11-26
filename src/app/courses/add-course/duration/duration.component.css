@@ -1,0 +1,10 @@
+label {
+    display: block;
+}
+input, span {
+    display: inline-block;
+}
+
+span {
+    margin-left: 10px;
+}
