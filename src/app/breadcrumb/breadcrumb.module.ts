@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BreadcrumbComponent} from './breadcrumb.component';
-
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -9,6 +9,7 @@ import {BreadcrumbComponent} from './breadcrumb.component';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
   ],
   exports: [
     BreadcrumbComponent,

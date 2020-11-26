@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
-    // SearchComponent,
   ],
   imports: [
     BrowserModule,

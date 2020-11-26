@@ -26,7 +26,7 @@ describe('DateComponent', () => {
 
   it('should change UI value on variable change', fakeAsync(() => {
     let inputField = fixture.debugElement.query(By.css('#date'));
-    component.date = 500;
+    component.date = '500';
     fixture.detectChanges();
     tick();
     expect(inputField.nativeElement.value).toBe('500');

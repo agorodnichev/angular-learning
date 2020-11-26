@@ -11,6 +11,7 @@
 
 .description {
     display: flex;
+    justify-content: space-between;
     letter-spacing: 0.03px;
 }
 

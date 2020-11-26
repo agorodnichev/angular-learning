@@ -24,7 +24,7 @@
     <div class="description">
         <p>{{ course.description }}</p>
         <div class="controls">
-            <button class="edit-button" (click)="editHandler()">Edit</button>
+            <button class="edit-button" [routerLink]="['/courses', course.id]">Edit</button>
             <button class="delete-button" (click)="deleteHandler(course.id)">Delete</button>
         </div>
     </div>

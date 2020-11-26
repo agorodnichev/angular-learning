@@ -21,9 +21,4 @@ export class CourseComponent implements OnInit {
   deleteHandler(event: number) {
     this.delete.emit(event);
   }
-
-  editHandler() {
-    console.log('edit handler pushed');
-  }
-
 }

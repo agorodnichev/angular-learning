@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddCourseComponent } from './add-course.component';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 
 describe('AddCourseComponent', () => {
   let component: AddCourseComponent;
@@ -12,6 +13,27 @@ describe('AddCourseComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AddCourseComponent, DateComponentMock, DurationComponentMock ],
       imports: [FormsModule],
+      providers: [
+        {
+          provide: ActivatedRoute, 
+          useValue: {
+            snapshot: {
+              data: {
+                action: 'edit'
+              },
+              params: {
+                id: 1
+              }
+            }
+          }
+        },
+        {
+          provide: Router,
+          useValue: {
+            navigate: jasmine.createSpy('router.navigate')
+          }
+        }
+      ]
     })
     .compileComponents();
   }));
@@ -47,6 +69,7 @@ describe('AddCourseComponent', () => {
   template: `<div></div>`
 })
 class DateComponentMock {
+  @Input() date: string;
 }
 
 @Component({
@@ -55,3 +78,5 @@ class DateComponentMock {
 })
 class DurationComponentMock {
 }
+
+

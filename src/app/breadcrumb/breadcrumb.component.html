@@ -1,3 +1,17 @@
 <div class="breadcrumb">
-    <p>{{ title }}</p>
+    <ul>
+        <ng-container *ngFor="let route of routes; first as isFirst; last as isLast" >
+            <ng-container *ngIf="!!route.path; else emptypath">
+                <li class="link"
+                    [routerLink]="[route.path]">
+                        {{ route.title | lowercase }}
+                </li>
+            </ng-container>
+            <ng-template #emptypath>
+                <li class="not__link">{{ route.title | lowercase}}</li>
+            </ng-template>
+            <span *ngIf="(isFirst !== isLast) && (!isLast)"> > </span>
+        </ng-container>
+    </ul>
 </div>
+

@@ -3,7 +3,7 @@
     <button (click)="searchHandler()">Search</button>
 </div>
 <div class="add-control-box">
-    <button class="add-button" [routerLink]="['./add-course']">Add course</button>
+    <button class="add-button" [routerLink]="['./new']">Add course</button>
 </div>
 <ng-container *ngIf="isCourseListEmpty else courses">
     <div class="no-data"><span>NO DATA. FEEL FREE TO ADD NEW COURSE</span></div>
