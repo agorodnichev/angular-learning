@@ -1,50 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Course} from './shared/course.model';
-import { FilterByTextPipe } from '../shared/pipes/filter-by-text.pipe';
 import { CoursesService } from './shared/courses.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'crs-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css'],
-  providers: [ FilterByTextPipe ]
+  styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent {
 
-  courses: Course[];
+  courses: Observable<Course[]>;
   inputValue: string;
-  filterList: Course[];
   
   constructor(
-    private readonly filterByTextPipe: FilterByTextPipe,
     private readonly coursesService: CoursesService,
-    ) {}
+    ) {
+      this.courses = this.coursesService.getList()
+    }
 
   searchHandler() {
-    this.filterList = this.filterByTextPipe.transform(this.courses, this.inputValue);
+    this.courses = this.coursesService.getList(this.inputValue);
   }
 
-  get isCourseListEmpty(): boolean {
-    return Array.isArray(this.courses) && !this.courses.length;
+  isCourseListEmpty(courses: Course[]) {
+    return courses.length === 0;
   }
-  
-  // ngOnChanges() {console.log('ngOnChanges');}
-  ngDoCheck() {
-    if(this.filterList.length !== this.courses.length) {
-      this.filterList = [...this.courses];
-    }
-  }
-  // ngAfterContentInit() {console.log('ngAfterContentInit');}
-  // ngAfterContentChecked() {console.log('ngAfterContentChecked');}
-  // ngAfterViewInit() {console.log('ngAfterViewInit');}
-  // ngAfterViewChecked() {console.log('ngAfterViewChecked');}
-  // ngOnDestroy() {console.log('ngOnDestroy');}
-
-  
-
-  ngOnInit(): void {
-    this.courses = this.coursesService.courses;
-    this.filterList = [...this.courses];
-  }
-
 }

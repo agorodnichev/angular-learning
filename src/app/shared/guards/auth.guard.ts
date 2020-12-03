@@ -19,7 +19,6 @@ export class AuthGuard implements CanActivate {
                  UrlTree> | 
                  Promise<boolean | 
                  UrlTree> | boolean | UrlTree {
-    
     if (this.authService.isAuthenticated) return true;
     return this.router.parseUrl('/courses');
   }

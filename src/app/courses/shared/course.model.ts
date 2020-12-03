@@ -3,9 +3,10 @@
  */
 export interface Course {
     id: number;
-    topRated?: boolean,
-    title: string;
-    creationDate: Date;
-    duration: number;
+    isTopRated?: boolean,
+    name: string;
+    date: Date;
+    length: number;
     description: string;
+    authors?: Array<{id: number, name: string, lastName: string}>
 };

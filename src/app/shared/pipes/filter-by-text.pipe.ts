@@ -7,7 +7,7 @@ import { Course } from '../../courses/shared/course.model';
 export class FilterByTextPipe implements PipeTransform {
 
   transform(items: Course[], substring: string): Course[] {
-    return items.filter(s => s.title.toUpperCase().includes(substring.toUpperCase()));
+    return items.filter(s => s.name.toUpperCase().includes(substring.toUpperCase()));
   }
 
 }
