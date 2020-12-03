@@ -5,6 +5,16 @@
     padding-left: calc((100% - 80%) / 2); /* 80% - body width */
 }
 
-.breadcrumb p {
-    padding: 0.5em 0;
+.breadcrumb ul {
+    display: flex;
+    gap: 15px;
+    list-style-type: none;
+}
+.breadcrumb .link {
+    cursor: pointer;
+    color: rgb(102, 102, 231);
+}
+
+.breadcrumb .not__link {
+    color: rgb(97, 0, 0);
 }

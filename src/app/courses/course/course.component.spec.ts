@@ -2,8 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CourseComponent } from './course.component';
 import { By } from '@angular/platform-browser';
 import { Pipe, PipeTransform, Directive, Input, ElementRef } from '@angular/core';
-
-
+import { RouterTestingModule } from '@angular/router/testing';
 
 
 describe('CourseComponent component', () => {
@@ -12,6 +11,7 @@ describe('CourseComponent component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ CourseComponent, MinutesToHoursPipeStub, HighlightBorderDirectiveMock ]
     })
     .compileComponents();
@@ -31,13 +31,6 @@ describe('CourseComponent component', () => {
   it('should define title', () => {
     let h2: HTMLElement = fixture.nativeElement.querySelector('h2');
     expect(h2.textContent).toContain('TEST1');
-  });
-
-  it('click on "edit" button calls handler', () => {
-    let editButton: HTMLElement = fixture.nativeElement.querySelector('.edit-button');
-    spyOn(component, 'editHandler')
-    editButton.click();
-    expect(component.editHandler).toHaveBeenCalled();
   });
 
   it('click on "delete" button calls handler', () => {

@@ -30,9 +30,10 @@ export class CoursesService {
     return this.courses.find(el => el.id === id);
   }
 
-  updateItem(item: Course) {
-    let idx = this.getItemIndexById(item.id)
-    this.courses.splice(idx, 1, item);
+  updateItem(id: number, item: Partial<Course>) {
+    let idx = this.getItemIndexById(id);
+    const copyElement = {...this.courses[idx], ...item}
+    this.courses.splice(idx, 1, copyElement);
   }
 
   removeItem(id: number) {

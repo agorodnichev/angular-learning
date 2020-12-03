@@ -7,11 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DateComponent implements OnInit {
 
-  @Input() date: number;
-  
+  @Input() date: string;
+  courseDate: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.courseDate = this.date;
   }
 
 }
