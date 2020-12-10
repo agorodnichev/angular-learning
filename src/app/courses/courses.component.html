@@ -1,13 +1,15 @@
-<div class="search">
-    <input [(ngModel)]="inputValue" type="search" placeholder="Type to search">
-    <button (click)="searchHandler()">Search</button>
-</div>
-<div class="add-control-box">
-    <button class="add-button" [routerLink]="['./new']">Add course</button>
-</div>
-<ng-container *ngIf="isCourseListEmpty else courses">
-    <div class="no-data"><span>NO DATA. FEEL FREE TO ADD NEW COURSE</span></div>
+<ng-container *ngIf="courses | async as courses">
+    <div class="search">
+        <input [(ngModel)]="inputValue" type="search" placeholder="Type to search">
+        <button (click)="searchHandler()">Search</button>
+    </div>
+    <div class="add-control-box">
+        <button class="add-button" [routerLink]="['./new']">Add course</button>
+    </div>
+    <ng-container *ngIf="isCourseListEmpty(courses) else coursesTmpl">
+        <div class="no-data"><span>NO DATA. FEEL FREE TO ADD NEW COURSE</span></div>
+    </ng-container>
+    <ng-template #coursesTmpl>
+        <crs-course-list [courses] = "courses"></crs-course-list>
+    </ng-template>
 </ng-container>
-<ng-template #courses>
-    <crs-course-list [courses] = "filterList"></crs-course-list>
-</ng-template >

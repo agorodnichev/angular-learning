@@ -5,6 +5,7 @@ import { HighlightBorderDirective } from './directives/highlight-border.directiv
 import { OrderByDatePipe } from './pipes/order-by-date.pipe';
 import { FilterByTextPipe } from './pipes/filter-by-text.pipe';
 
+
 @NgModule({
   declarations: [
   MinutesToHoursPipe,

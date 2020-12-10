@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {User} from '../../user/user.model';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../user/user.model';
 
 
 @Injectable({
@@ -9,20 +10,27 @@ export class AuthService {
 
   isAuthenticated = false;
 
-  constructor() { 
+  constructor(private readonly httpClient: HttpClient) { 
+
     if (this.getUserInfo()) {
       this.isAuthenticated = true;
     }
   }
 
-  login(user: Omit<User, 'id'>) {
-    let token: string = Math.random().toString(36).substr(2);
-    localStorage.setItem('logininfo', JSON.stringify({
-      token, 
-      userInfo: user
-    }));
-
-    this.isAuthenticated = true;
+  login(user: Omit<User, 'id'>, onSuccesCallback?: ()=>void) {
+    this.httpClient.post('http://localhost:3004/auth/login', {
+      login: user.email,
+      password: user.password
+    }).subscribe(
+      token => {
+        localStorage.setItem('logininfo', JSON.stringify({
+          token: token['token'], 
+          userInfo: user
+        }));
+        this.isAuthenticated = true;
+        if (onSuccesCallback) onSuccesCallback();
+      }
+    );
   }
 
   logout() {
@@ -31,6 +39,6 @@ export class AuthService {
   }
 
   getUserInfo(): Omit<User, 'id'> {
-    return JSON.parse(localStorage.getItem('logininfo'))?.userInfo;
+    return JSON.parse(localStorage.getItem('logininfo'));
   }
 }

@@ -1,8 +1,8 @@
-<div class="course" [crsHighlightBorder]="course.creationDate">
+<div class="course" [crsHighlightBorder]="course.date">
     <div class="course-header">
         <div class="titled-items">
-            <h2>{{ course.title | uppercase }}</h2>
-            <svg *ngIf="course.topRated"
+            <h2>{{ course.name | uppercase }}</h2>
+            <svg *ngIf="course.isTopRated"
                 class="star"
                 xmlns="http://www.w3.org/2000/svg" 
                 enable-background="new 0 0 24 24" 
@@ -17,8 +17,8 @@
         </div>
 
         <div class="course-parameters">
-            <div class="course-duration"><span>{{ course.duration | minutesToHours }}</span></div>
-            <div class="course-date"><span>{{ course.creationDate | date: "MM/dd/yyyy" }}</span></div>
+            <div class="course-duration"><span>{{ course.length | minutesToHours }}</span></div>
+            <div class="course-date"><span>{{ course.date | date: "MM/dd/yyyy" }}</span></div>
         </div>
     </div>
     <div class="description">

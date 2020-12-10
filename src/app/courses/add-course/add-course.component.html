@@ -1,14 +1,14 @@
 <div class="wrapper">
     <!-- E-mail -->
     <label for="title">Title:</label>
-    <input type="text" [(ngModel)]="title" placeholder="Enter course title" id="title" name="title">
+    <input type="text" [(ngModel)]="name" placeholder="Enter course title" id="title" name="title">
 
     <!-- Description -->
     <label for="description">Description:</label>
     <textarea [(ngModel)]="description" id="description" name="description" placeholder="Enter course description" rows="5"></textarea>
 
     <!-- Date -->
-    <crs-date class="date" [date]="createDate"></crs-date>
+    <crs-date class="date" [date]="date"></crs-date>
 
     <!-- Duration -->
     <crs-duration class="duration"></crs-duration>

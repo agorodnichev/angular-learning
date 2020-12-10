@@ -20,7 +20,7 @@ describe('CourseComponent component', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CourseComponent);
     component = fixture.componentInstance;
-    component.course = {id: 1, topRated: true, title: 'Test1', creationDate: new Date(2020, 9, 17), duration: 1, description: 'test descr'}; 
+    component.course = {id: 1,isTopRated: true, name: 'Test1', date: new Date(2020, 9, 17), length: 1, description: 'test descr'}; 
     fixture.detectChanges();
   });
 

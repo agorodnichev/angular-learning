@@ -19,8 +19,8 @@ describe('CoursesComponent', () => {
           provide: CoursesService, 
           useValue: {
             courses: [
-              {id: 1, topRated: true, title: 'Test title 1', creationDate: new Date(2020, 9, 30), duration: 148, description: 'Test1'},
-              {id: 2, topRated: false, title: 'Test title 2', creationDate: new Date(2020, 9, 25), duration: 2000, description: 'Test2'},
+              {id: 1,isTopRated: true, title: 'Test title 1', creationDate: new Date(2020, 9, 30), length: 148, description: 'Test1'},
+              {id: 2,isTopRated: false, title: 'Test title 2', creationDate: new Date(2020, 9, 25), length: 2000, description: 'Test2'},
             ]
           }
       },

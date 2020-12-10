@@ -1,5 +1,5 @@
 <div class="course-list">
-    <ng-container *ngFor="let course of courses | orderByDate">
+    <ng-container *ngFor="let course of courses">
         <crs-course class="course-item" [course]="course" (delete)="deleteCourse($event)"></crs-course>
     </ng-container>
     <div class="load-courses">
