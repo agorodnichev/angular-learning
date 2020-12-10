@@ -27,6 +27,7 @@ describe('AppComponent', () => {
         FooterStub,
         RouterOutletStub,
         UserStub,
+        LoaderStub,
       ],
     }).compileComponents();
   }));
@@ -53,3 +54,4 @@ describe('AppComponent', () => {
 @Component({selector: 'crs-footer', template: ''}) class FooterStub{};
 @Component({selector: 'router-outlet', template: ''}) class RouterOutletStub{};
 @Component({selector: 'crs-user', template: '<div id="user-test">test_user</div>'}) class UserStub{};
+@Component({selector: 'crs-loader', template: ''}) class LoaderStub{};

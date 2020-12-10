@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {Course} from './shared/course.model';
 import { CoursesService } from './shared/courses.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject, concat } from 'rxjs';
+import { debounceTime, filter, first, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'crs-courses',
@@ -10,17 +11,27 @@ import { Observable } from 'rxjs';
 })
 export class CoursesComponent {
 
+  subject = new Subject<string>();
   courses: Observable<Course[]>;
   inputValue: string;
   
   constructor(
     private readonly coursesService: CoursesService,
     ) {
-      this.courses = this.coursesService.getList()
+      this.courses = 
+      
+      concat(
+      this.coursesService.getList().pipe(first()),
+      this.subject.pipe(
+        filter(searchText => searchText.length >= 3),
+        debounceTime(250),
+        switchMap((searchText: string) => this.coursesService.getList(searchText))
+      ));
+
     }
 
-  searchHandler() {
-    this.courses = this.coursesService.getList(this.inputValue);
+  handleTyping(event: any) {
+    this.subject.next(event.target.value);
   }
 
   isCourseListEmpty(courses: Course[]) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { pluck, filter } from 'rxjs/operators';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -8,9 +9,13 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  userInfo = this.authService.getUserInfo().pipe(
+    filter(data => !!data),
+    pluck('userInfo'),
+  );
+
   constructor(readonly authService: AuthService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

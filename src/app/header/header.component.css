@@ -14,3 +14,8 @@
     display: flex;
     margin-right: 20px;
 }
+
+.controls span {
+    padding: 0.5em;
+    color: rgb(245, 185, 185)
+}

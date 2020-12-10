@@ -2,6 +2,9 @@ import { Component, Pipe, PipeTransform } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CourseListComponent } from './course-list.component';
+import { CoursesService } from '../shared/courses.service';
+import { of } from 'rxjs';
+
 
 describe('CourseListComponent', () => {
   let component: CourseListComponent;
@@ -9,7 +12,16 @@ describe('CourseListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseListComponent, CourseStub, OrderByDatePipeMock ]
+      declarations: [ CourseListComponent, CourseStub, OrderByDatePipeMock ],
+      providers: [
+        {
+          provide: CoursesService,
+          useValue: {
+            removeItem: jasmine.createSpy('coursesService.removeItem').and.returnValue(of(null)),
+            getList: jasmine.createSpy('coursesService.getList').and.returnValue(of([]))
+          }
+        }
+      ]
     })
     .compileComponents();
   }));

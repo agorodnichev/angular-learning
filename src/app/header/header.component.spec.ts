@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { AuthService } from '../shared/services/auth.service';
 
 import { HeaderComponent } from './header.component';
 
@@ -9,7 +11,19 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent, AuthButtonStub, LogoStub ]
+      declarations: [ HeaderComponent, AuthButtonStub, LogoStub ],
+      providers: [
+        {
+          provide: AuthService,
+          useValue: {
+            getUserInfo: jasmine.createSpy('authService.getUserInfo').and.returnValue(of({
+              email: 'test@test.com',
+              password: '123',
+              token: 'asjfnj33j9o'              
+            }))
+          }
+        }
+      ]
     })
     .compileComponents();
   }));
@@ -17,7 +31,7 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+  fixture.detectChanges();
   });
 
   it('should create', () => {

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../services/auth.service';
 import { AuthGuard } from './auth.guard';
 
 describe('AuthGuard', () => {
@@ -14,6 +14,12 @@ describe('AuthGuard', () => {
           useValue: {
             parseUrl: () => {}
           }
+        },
+        {
+          provide: AuthService,
+          useValue: {
+            isAuthenticated: true
+          }
         }
       ]
     });
@@ -24,4 +30,3 @@ describe('AuthGuard', () => {
     expect(guard).toBeTruthy();
   });
 });
-// this.router.parseUrl('/courses')

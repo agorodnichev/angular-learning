@@ -30,8 +30,11 @@ export class UserComponent implements OnInit {
       () => {
         this.router.navigate(['/courses'])
       }
+    ).subscribe(
+      data => {
+        console.log(data);
+      }
     );
-    console.log('logged in successfully');
   }
 
 }
