@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, delay } from 'rxjs/operators';
 import { LoaderService } from 'src/app/shared/services/loader.service';
+import { Store } from '@ngrx/store';
+import { editCourse, addCourse } from './stores/courses-list/courses-list.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +32,6 @@ export class CoursesService {
 
   createCourse(course: Course): Observable<any> {
     return this.loaderService.showLoaderUntilCompleted(this.httpClient.post('http://localhost:3004/courses', course));
-    // let id = this.getLastId() + 1;
-    // this.courses.push({id, ...course})
   }
 
   getItemById(id: number): Observable<Course> {

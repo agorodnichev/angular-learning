@@ -3,19 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../../user/user.model';
 import {Observable, of} from 'rxjs';
 import { tap } from 'rxjs/operators';
-// import {} from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { setAuthToTrue, setAuthToFalse } from '../stores/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  isAuthenticated = false;
-
-  constructor(private readonly httpClient: HttpClient) { 
+  constructor(
+    private readonly httpClient: HttpClient,
+    private readonly store: Store<{isAuth: boolean}>,
+    ) { 
 
     if (!!localStorage.getItem('logininfo')) {
-      this.isAuthenticated = true;
+      this.store.dispatch(setAuthToTrue())
     }
   }
 
@@ -29,7 +31,7 @@ export class AuthService {
           token: token['token'], 
           userInfo: user
         }));
-        this.isAuthenticated = true;
+        this.store.dispatch(setAuthToTrue());
         if (onSuccesCallback) onSuccesCallback();        
       })
     );
@@ -37,7 +39,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('logininfo');
-    this.isAuthenticated = false;
+    this.store.dispatch(setAuthToFalse());
   }
 
   getUserInfo(): Observable<Omit<User, 'id'>> {

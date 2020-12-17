@@ -14,6 +14,10 @@ import { TokenInterceptor } from './shared/interceptors/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 
+import { StoreModule } from '@ngrx/store';
+import { isAuthReducer } from './shared/stores/auth/auth.reducer';
+import { setNewCoursesListReducer } from './courses/shared/stores/courses-list/courses-list.reducer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +34,10 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
+    StoreModule.forRoot(
+      { isAuth: isAuthReducer,
+        coursesList: setNewCoursesListReducer }
+    )
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

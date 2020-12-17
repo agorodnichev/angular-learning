@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesService } from '../shared/courses.service';
 import { BreadcrumbService } from 'src/app/breadcrumb/services/breadcrumb.service';
 import { Subscription } from 'rxjs';
+import { editCourse, addCourse } from '../shared/stores/courses-list/courses-list.actions';
+import { Store } from '@ngrx/store';
+import { Course } from '../shared/course.model';
 
 @Component({
   selector: 'crs-add-course',
@@ -27,6 +30,7 @@ export class AddCourseComponent implements OnInit, OnDestroy {
     private readonly datePipe: DatePipe,
     private readonly router: Router,
     private readonly breadcrumbService: BreadcrumbService,
+    private readonly store: Store<{coursesList: Course[]}>
     ) { }
 
   ngOnInit(): void {
@@ -75,11 +79,16 @@ export class AddCourseComponent implements OnInit, OnDestroy {
 
     if (this.route.snapshot.data['action'] === 'edit') {
       this.coursesService.updateItem(this.id, newItem).subscribe(
-        data => console.log(data)
+        data => {
+          this.store.dispatch(editCourse({Course: data}))
+          // this.store.select('coursesList').subscribe(a => console.log(a))
+        }
       );
     } else if (this.route.snapshot.data['action'] === 'add') {
       this.coursesService.createCourse(newItem).subscribe(
-        data => console.log(data)
+        data => {
+          this.store.dispatch(addCourse({Course: data}))
+        }
       );
     }
     this.router.navigate(['/courses']);

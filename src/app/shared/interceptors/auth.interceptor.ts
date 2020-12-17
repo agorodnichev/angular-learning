@@ -3,15 +3,18 @@ import {Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
     constructor(
         private readonly authService: AuthService,
+        private readonly store: Store<{isAuth: boolean}>,
     ) {}
     intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
         let token: string = ''
-        if (this.authService.isAuthenticated) {
+        if (this.store.select('isAuth')) {
+        // if (this.authService.isAuthenticated) {
 
             this.authService.getUserInfo().pipe(first()).subscribe(
                 data => {
