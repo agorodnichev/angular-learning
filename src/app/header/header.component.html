@@ -1,6 +1,7 @@
 <div class="header">
     <crs-logo class="logo"></crs-logo>
     <div class="controls">
+        <span *ngIf="userInfo | async as user">{{ user.email}}</span>
         <crs-auth-button iconUrl="url_to_login_icon" title="User login"></crs-auth-button>
         <crs-auth-button (click)="authService.logout()" iconUrl="url_to_logout_icon" title="Log off"></crs-auth-button>
     </div>
