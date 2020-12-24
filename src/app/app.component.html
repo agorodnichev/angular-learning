@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <crs-header></crs-header>
-    <ng-container *ngIf="authService.isAuthenticated else user">
+    <ng-container *ngIf="isAuth | async else user">
         <crs-breadcrumb></crs-breadcrumb>
         <div class="body-wrapper">
             <section>
