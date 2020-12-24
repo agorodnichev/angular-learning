@@ -1,10 +1,11 @@
-label {
-    display: block;
-}
-input, span {
+label, span, input {
     display: inline-block;
 }
 
 span {
     margin-left: 10px;
+}
+
+.ng-invalid.ng-touched {
+    border: 1px solid red;
 }

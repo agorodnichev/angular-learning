@@ -1,5 +1,9 @@
-label, input, textarea {
+input, textarea {
     display: block;
+}
+
+label {
+    display: inline-block;
 }
 
 .wrapper {
@@ -15,7 +19,7 @@ input, textarea {
 .date, .duration {
     margin-bottom: 25px;
     display: block;
-    width: 25%;
+    /* width: 25%; */
 }
 
 span {
@@ -36,4 +40,16 @@ button {
     border-radius: 5px;
     border: 0.1px solid rgba(7,120,173,0.7);
     cursor: pointer;
+}
+
+.save:disabled {
+    background-color: #c3c3c3;
+}
+
+form input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+small {
+    color: red;
 }
