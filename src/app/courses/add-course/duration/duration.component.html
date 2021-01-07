@@ -1,4 +1,14 @@
-    <!-- Duration -->
-    <label for="duration">Duration:</label>
-    <input type="number" [(ngModel)]="duration" id="duration" name="duration" min="0">
-    <span>{{ duration | minutesToHours }}</span>
+<!-- Duration -->
+<label for="duration">Duration:</label>
+<div>
+    <input 
+        #control
+        [formControl]="courseDuration"
+        (blur)="onBlur()"
+        (input)="onInputChange()"
+        type="number" 
+        id="duration" 
+        name="duration" 
+        min="0">
+    <span>{{ courseDuration.value === null ? '' : courseDuration.value | minutesToHours }}</span>
+</div>

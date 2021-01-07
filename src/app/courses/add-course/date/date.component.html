@@ -1,2 +1,9 @@
 <label for="date">Date:</label>
-<input type="text" [(ngModel)]="courseDate" id="date" name="date">
+<input 
+    #control
+    (blur)="onBlur()"
+    (input)="onInputChange()"
+    [formControl]="courseDate"
+    type="text" 
+    id="date" 
+    name="date">

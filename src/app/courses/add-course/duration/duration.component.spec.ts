@@ -28,7 +28,7 @@ describe('DurationComponent', () => {
 
   it('should change UI value on variable change', fakeAsync(() => {
     let inputField = fixture.debugElement.query(By.css('#duration'));
-    component.duration = 333;
+    // component.duration = 333;
     fixture.detectChanges();
     tick();
     expect(inputField.nativeElement.value).toBe('333');
