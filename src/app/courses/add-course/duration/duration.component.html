@@ -2,10 +2,13 @@
 <label for="duration">Duration:</label>
 <div>
     <input 
-        [formControl]="ngControl.control"
+        #control
+        [formControl]="courseDuration"
+        (blur)="onBlur()"
+        (input)="onInputChange()"
         type="number" 
         id="duration" 
         name="duration" 
         min="0">
-    <span>{{ ngControl.control.value | minutesToHours }}</span>
+    <span>{{ courseDuration.value === null ? '' : courseDuration.value | minutesToHours }}</span>
 </div>

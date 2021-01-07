@@ -50,6 +50,11 @@
             [date]="mainForm.get('date').value"></crs-date>
     
         <!-- Duration -->
+        <ng-container *ngIf="mainForm.get('length').invalid && mainForm.get('length').touched" >
+            <small *ngIf="mainForm.get('length').hasError('required')">
+                this field is required
+            </small>
+        </ng-container>
         <crs-duration 
             [formControl]="mainForm.get('length')"
             class="duration"></crs-duration>

@@ -44,14 +44,9 @@ export class AddCourseComponent implements OnInit, OnDestroy {
     private readonly router: Router,
     private readonly breadcrumbService: BreadcrumbService,
     private readonly store: Store<{coursesList: Course[]}>
-    ) { 
-
-      // this.mainForm.controls['length'].setValue(0);
-
-    }
+    ) {}
 
   ngOnInit(): void {
-    console.log(this.mainForm)
     if (this.route.snapshot.data['action'] === 'edit') {
       this.cuurentId = parseInt(this.route.snapshot.params['id']);
       this.subscription.add(

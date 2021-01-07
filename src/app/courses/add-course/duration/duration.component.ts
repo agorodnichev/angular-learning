@@ -1,31 +1,56 @@
-import { Component, OnInit, Input, forwardRef, Self } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, Self, ViewChild, ElementRef } from '@angular/core';
 import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, NgControl, NgForm, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms';
 @Component({
   selector: 'crs-duration',
   templateUrl: './duration.component.html',
   styleUrls: ['./duration.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DurationComponent),
+      multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => DurationComponent),
+      multi: true
+    }
+  ],
 })
 export class DurationComponent implements OnInit, ControlValueAccessor {
-
+  
+  @ViewChild('control', {static: true, read: ElementRef}) 
+  inputElementRef: ElementRef;
   // @Input() duration: number = 0;
-  // value = new FormControl('', [Validators.required]);
+  courseDuration = new FormControl('');
 
-  constructor(
-    @Self() public ngControl: NgControl,
-  ) { 
-    this.ngControl.valueAccessor = this;
-  }
+  onTouched = () => {};
+  onChange = _ => {};
 
   ngOnInit(): void {
   }
 
-  writeValue(obj: any) {}
+  onBlur() {
+    this.onTouched();
+  }
 
-  registerOnChange(fn: any) { }
+  onInputChange() {
+    const value = this.inputElementRef.nativeElement.value;
+    this.onChange(value);
+  }
 
-  registerOnTouched(fn: any) { }
+  writeValue(obj: any) {
+    this.courseDuration.setValue(obj);
+  }
 
-  setDisabledState?(isDisabled: boolean) { }
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+   }
 
+  registerOnTouched(fn: any) { 
+    this.onTouched = fn;
+  }
+
+  validate( { value }: FormControl) {}
 
 }
